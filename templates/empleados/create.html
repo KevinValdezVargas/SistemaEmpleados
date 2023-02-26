@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+{% with messages= get_flashed_messages() %}
+{% if messages %}
+    <div class="bg-danger py-3 text-center" role="alert">
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{%endwith %}
+<form action="/store" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+          Ingresar empleados
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Datos del empleado</h5>
+          <p class="card-text">
+            Nombre:
+            <input type="text" name="txtNombre" id="txtNombre">
+            Correo
+            <input type="text" name="txtCorreo" id="txtCorreo">
+            Foto
+            <input type="file" name="txtFoto" id="txtFoto">
+            <div class="input-group">
+                <input type="submit" class="btn btn-success" value="Agregar">
+                <a class="btn btn-primary" href="{{url_for('index')}}">Regresar</a>
+            </div>
+            
+          </p>
+          
+        </div>
+      </div>
+
+</form>
+{% include 'footer.html' %}
